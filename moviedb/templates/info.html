@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}{{ movie['long title'] }}{% endblock %}
+
+{% block content %}
+<div class="mycontainer">
+    <div id="movieinfo" class="movieinfo {% if isfavorite %}fav-bg{% endif %}">
+    {% if movie['cover'] %}
+    <img class="poster" src="{{ movie['cover'] }}">
+    {% endif %}
+    <div class="infotext">
+      <div class="infotext-head">
+        <h1 class="movie-title">{{ movie['long title']}}</h1>
+        <i id="heart" class="{% if isfavorite %}material-icons md-fav
+               {% else %}disapear{% endif %}">favorite</i>
+      </div>
+      {% if movie['rating'] %}
+      <div class="rating">
+        <i class="material-icons gold"> star </i>
+        <p class="rating-no">{{ movie['rating'] }}</p>
+      </div>
+      {% endif %}
+      <p class="genres">{{ movie['genres'] }} </p>
+      <p class="runtime">{{ movie['runtime'] }}</p>
+      <p class="plot"> {{ movie['plot'] }} </p>
+      <p class="director">Director: {{ movie['director'] }}</p>
+      <p class="writer">Writer: {{ movie['writer'] }}</p>
+      {% if isfavorite %}
+      <button id="favButton" type=submit class="fav" name="remove" value="{{ movie['id'] }}">
+        <i class="material-icons md-fav">cancel</i>
+        <p class="fav-text">remove from favorites</p>
+      </button>
+      {% elif not isfavorite and session.get('user', None) %}
+      <button id="favButton" type=submit class="fav" name="add" value="{{ movie['id'] }}">
+        <i class="material-icons md-fav">favorite</i>
+        <p class="fav-text">add to favorites</p>
+      </button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+
+<script>
+(function() {
+    var httpReq = new XMLHttpRequest();
+    var formdata = new FormData();
+
+    var favButton = document.getElementById("favButton");
+    var tconst = favButton.getAttribute("value");
+    var bg = document.getElementById("movieinfo");
+    var heart = document.getElementById("heart");
+
+
+    favButton.addEventListener('click', handleReq);
+
+    function handleReq() {
+        var action = favButton.getAttribute("name");
+        httpReq.onreadystatechange = notify;
+        // httpReq.open('POST', 'http://localhost:5000/fav');
+        httpReq.open('POST', 'https://project-moviedb.herokuapp.com/fav');
+        formdata.append('tconst', tconst);
+        if (action == "remove"){
+            formdata.append('remove', 1);
+        }
+        httpReq.send(formdata);
+    }
+
+    function notify() {
+        if (httpReq.readyState === XMLHttpRequest.DONE) {
+            var response = JSON.parse(httpReq.responseText);
+            if (response.status == "success"){
+                if (response.actiontype == "add"){
+                    favButton.firstElementChild.innerHTML = "cancel";
+                    favButton.lastElementChild.innerHTML = "remove from favorites";
+                    favButton.setAttribute("name", "remove");
+                    bg.className="movieinfo fav-bg";
+                    heart.className="material-icons md-fav"
+                }
+                else if (response.actiontype == "remove"){
+                    favButton.firstElementChild.innerHTML = "favorite";
+                    favButton.lastElementChild.innerHTML = "add to favorites";
+                    favButton.setAttribute("name", "add");
+                    bg.className="movieinfo";
+                    heart.className="disapear "
+                }
+            }
+        }
+    }
+})();
+</script>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+flask
+flask-cors
+flask-sqlalchemy
+imdbpy
+tmdbsimple
+gunicorn
+psycopg2

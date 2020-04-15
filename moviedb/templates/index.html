@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Search For Movies and TV Shows{% endblock %}
+
+{% block content %}
+<div class="search_body">
+  <div class="mycontainer">
+    <form class="search" action="{{ url_for('main.search') }}" method="get">
+      <input name="q" type=text class="srch-input" placeholder="Search for Movies/TV Shows">
+      <i class="material-icons md-36 grey" > search </i>
+      </input>
+    </form>
+  </div>
+</div>
+{% endblock %}

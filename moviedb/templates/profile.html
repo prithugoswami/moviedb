@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}{{ session['user'] }}'s Profile{% endblock %}
+
+{% block content %}
+
+{% if session['user'] %}
+<div class="mycontainer">
+    <div class="profile">
+        <div class="profile-head">
+            <div class="profile-head-left">
+                <h1>{{ session['user'] }}</h1>
+                <p class="profile-fav-count">
+                <i class="material-icons md-fav">favorite</i>
+                {{ user_data['favorite_count'] }} Favorites
+                </p>
+            </div>
+            <div class="profile-head-right">
+                <p class="profile-fav-genre">
+                Favorite Genre:
+                <strong>{{ user_data['favorite_genre'] }}</strong>
+                </p>
+                <p class="profile-fav-genre">
+                Recent Favorite:
+                <strong>{{ user_data['recent_fav'] }}</strong>
+                </p>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <h2>Favorite Titles</h2>
+        {% for movie in user_data['movies'] %}
+        <a href="{{ url_for('main.info', id=movie['id']) }}" class="profile-list-item">
+            {% if posters_on_profile_page %}
+            <img class="profile-list-poster" src="{{ movie['cover'] }}">
+            {% endif %}
+            <div class="profile-list-item-text">
+                <p  class="profile-list-title">{{ movie['long title'] }}</p>
+                <p  class="genres">{{ movie['genres'] }}</p>
+                <div class="profile-list-rating">
+                    <i class="material-icons gold"> star </i>
+                    <p class="rating-no">{{ movie['rating'] }}</p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<h1> You need to
+    <a class="has-text-primary" href="{{ url_for('auth.login') }}">Login</a>
+    in order to view your profile
+</h1>
+{% endif %}
+
+{% endblock %}

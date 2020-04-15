@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+<div class="mycontainer">
+  <div class=results>
+    {% for res in results %}
+    <a class=result-box href="{{ url_for('main.info', id=res['id']) }}">
+      {%if res['cover'] %}
+      <img src="{{ res['cover'] }}" class=res-poster>
+      {% endif %}
+      <div class="res-text">
+        <h3 class=res-title>{{res['title']}} ({{res['year']}})</h3>
+        <p class="kind">type: {{res['kind']}}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

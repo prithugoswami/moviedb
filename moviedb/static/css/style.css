@@ -1,0 +1,89 @@
+body{
+    background-image: url("../img/background2.jpg");
+}
+
+/*.header{
+    margin-top: -30px;
+    margin-left:-10px;
+    margin-right:-10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(76, 88, 4);
+    text-align:left;
+    background-color: rgb(2, 26, 18);
+    height:100px;
+    background-image: url("../img/header2.jpg")
+}
+h1{
+}
+*/
+.form1{
+    align-content: center;
+}
+.form2{
+    align-content: center;
+}
+.form3{
+    align-content: center;
+}
+
+h1{
+    margin-left:680px;
+}
+
+.search_block{
+    margin-left:720px;
+    margin-top:200px;
+}
+
+.input{
+    border:20px;
+    border-color:red;
+    margin-left:-200px;
+    height:50px;
+    width:900px;
+}
+
+#b1{
+    position: absolute;
+    margin-top:0px;
+    margin-left:20px;
+    height:50px;
+    width:90px;
+}
+
+#b2{
+    height: 200px;
+    width : 200px;
+    margin-left:-90px;
+    background-image: url("../img/5Star.jpg");
+}
+
+#b3{
+    position: absolute;
+    height: 200px;
+    width : 200px;
+    margin-left: 400px;
+    margin-top:-200px;
+    background-image: url("../img/trending.jpg")
+}
+
+#b3:hover{
+    background-color: rgba(9, 109, 6, 0.842);
+    transform:scale(1.2,1.2);
+    -webkit-transform:scale(1.2,1.2);
+    -moz-transform:scale(1.2,1.2);
+
+}
+#b2:hover{
+    background-color: rgba(9, 109, 6, 0.842);
+    transform:scale(1.2,1.2);
+    -webkit-transform:scale(1.2,1.2);
+    -moz-transform:scale(1.2,1.2);
+}
+#b1:hover{
+    background-color: darkcyan;
+    transform:scale(1.1,1.2);
+    -webkit-transform:scale(1.2,1.2);
+    -moz-transform:scale(1.2,1.2);
+}

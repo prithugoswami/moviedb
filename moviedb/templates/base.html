@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>{% block title %}{% endblock %} - moviedb</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//fonts.googleapis.com/css?family=Roboto:400,500,900" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Roboto+Mono:500" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename="css/normalize.css")}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename="css/custom.css")}}">
+
+
+</head>
+<body>
+  <nav>
+    <div class="nav-left">
+      <p class="nav-item"><a href="{{ url_for('main.index') }}">Home</a></li></p>
+    </div>
+    <div class="nav-right">
+      {% if not session['user'] %}
+      <p class="nav-item"><a href="{{ url_for('auth.login') }}">Login</a></p>
+      <p class="nav-item"><a href="{{ url_for('auth.signup') }}">Sign up</a></p>
+      {% else %}
+      <p class="nav-username nav-item">
+      Logged in as <span style="color:white;font-weight:700">{{ session['user'] }}</span></p>
+      <p class="nav-item"><a href="{{ url_for('auth.logout') }}">Logout</a></p>
+      <p class="nav-item"><a href="{{ url_for('main.profile') }}">Profile</a></p>
+      {% endif %}
+    </div>
+  </nav>
+{% block content %}
+{% endblock %}
+
+{% block script %}
+{% endblock script %}
+</body>
+</html>
