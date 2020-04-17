@@ -22,7 +22,7 @@ local=False
 enable_extra=True
 
 # to laod posters on profile page
-posters_on_profile_page=False
+posters_on_profile_page=True
 
 tmdb_img_url = r'https://image.tmdb.org/t/p/w342'
 
