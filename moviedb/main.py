@@ -6,6 +6,7 @@ from imdb import IMDb
 from pprint import pprint as pp
 import tmdbsimple as tmdb
 import json
+import concurrent.futures
 
 
 
@@ -109,9 +110,10 @@ def profile():
     user_data['favorite_count'] = len(fav_tconsts)
     user_data['favorite_genre'] = user.fav_genre
     user_data['recent_fav'] = user.recent_fav
-    for a in fav_tconsts:
-        movie = {}
-        mov = ia.get_movie(a)
+
+    def get_fav_movie_info(tconst):
+        movie={}
+        mov = ia.get_movie(tconst)
 
         long_title = mov.get('long imdb title')
         genres = (", ".join(mov.get('genres', []))).title()
@@ -119,7 +121,7 @@ def profile():
         cover =  None
 
         if posters_on_profile_page:
-            find = tmdb.Find('tt{:07}'.format(int(a)))
+            find = tmdb.Find('tt{:07}'.format(int(tconst)))
             find.info(external_source='imdb_id')
             cover_path =  None
 
@@ -130,9 +132,9 @@ def profile():
 
             if cover_path:
                 cover = tmdb_img_url + cover_path
-
+                
         movie = {
-                'id': a,
+                'id': tconst,
                 'long title': long_title,
                 'rating': rating if rating else '',
                 'genres': genres,
@@ -140,6 +142,9 @@ def profile():
         }
 
         user_data['movies'].append(movie)
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=12) as executor:
+        executor.map(get_fav_movie_info, fav_tconsts)
 
     return render_template('profile.html',
             user_data=user_data,
