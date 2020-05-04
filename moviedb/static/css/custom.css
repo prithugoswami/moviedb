@@ -127,6 +127,12 @@ nav a:hover{
     text-transform: none;
 }
 
+@media only screen and (max-width: 700px){
+    .nav-username {
+        display:none;
+    }
+}
+
 .landing{
     background: url(../img/bg.jpg);
     display: flex;
@@ -145,6 +151,7 @@ nav a:hover{
     justify-content: center;
     align-items: center;
 }
+
 
 .search{
     display: flex;
@@ -197,13 +204,36 @@ nav a:hover{
     align-items: flex-start;
 }
 
+@media only screen and (max-width: 700px){
+    .movieinfo {
+        width: 95%;
+        flex-wrap: wrap;
+        padding: 1rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
 .poster{
     flex-shrink: 0;
     width: 30%;
 }
 
+@media only screen and (max-width: 700px){
+    .poster{
+        flex-shrink: 0;
+        width: 50%;
+        margin-bottom: 2rem;
+    }
+}
+
 .infotext {
     padding-left: 2.6rem;
+}
+
+@media only screen and (max-width: 700px){
+    .infotext{
+        padding: 0rem;
+    }
 }
 
 .infotext-head {
@@ -212,6 +242,12 @@ nav a:hover{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 700px){
+    .infotext-head{
+        margin-bottom: 0.4rem;
+    }
 }
 .infotext-head .material-icons.md-fav {
     font-size: 2rem;
