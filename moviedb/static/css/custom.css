@@ -127,7 +127,7 @@ nav a:hover{
     text-transform: none;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 767px){
     .nav-username {
         display:none;
     }
@@ -204,7 +204,7 @@ nav a:hover{
     align-items: flex-start;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 767px){
     .movieinfo {
         width: 95%;
         flex-wrap: wrap;
@@ -218,7 +218,7 @@ nav a:hover{
     width: 30%;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 767px){
     .poster{
         flex-shrink: 0;
         width: 50%;
@@ -230,7 +230,7 @@ nav a:hover{
     padding-left: 2.6rem;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 767px){
     .infotext{
         padding: 0rem;
     }
@@ -244,7 +244,7 @@ nav a:hover{
     margin-bottom: 2rem;
 }
 
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 767px){
     .infotext-head{
         margin-bottom: 0.4rem;
     }
@@ -417,6 +417,12 @@ nav a:hover{
     flex-direction: column;
 }
 
+@media only screen and (max-width: 767px){
+    .results{
+        width:95%;
+    }
+}
+
 .result-box{
     background-color: white;
     padding: 1rem 1.5rem;
@@ -471,6 +477,13 @@ nav a:hover{
     margin-bottom: 4rem;
 }
 
+@media only screen and (max-width: 767px){
+    .profile {
+        width: 95%;
+        padding: 1rem;
+    }
+}
+
 .profile-head h1{
     font-weight: 700;
     font-size: 2.5rem;
@@ -501,7 +514,8 @@ nav a:hover{
 
 .profile-head-right{
     width: 50%;
-    display: flex;
+    /* display: flex; */
+    display:none;
     flex-direction: column;
     align-items: flex-end;
 }
@@ -553,8 +567,11 @@ nav a:hover{
 .profile-list-item-text {
     padding-left: 1rem;
 }
+
 .profile-list-title {
     font-size: 1.4rem;
+    line-height: 1.2;
+
 }
 
 .profile-list-rating {
