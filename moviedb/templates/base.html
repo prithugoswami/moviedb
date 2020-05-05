@@ -22,6 +22,10 @@
   <nav>
     <div class="nav-left">
       <p class="nav-item"><a href="{{ url_for('main.index') }}">Home</a></li></p>
+      <a href="https://github.com/prithugoswami/moviedb" class="nav-item" target="_blank">
+          <img src="{{ url_for('static', filename="img/github.svg")}}"
+               style="width:24px;transform:translate(0, 2px)">
+      </a>
     </div>
     <div class="nav-right">
       {% if not session['user'] %}
