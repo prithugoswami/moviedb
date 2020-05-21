@@ -172,9 +172,13 @@ nav a:hover{
     border: none;
     box-sizing: border-box;
     font-family: Roboto;
-    font-style: style;
     font-size: 20px;
     padding-left: 2rem;
+}
+
+.srch-input:focus{
+    outline: none;
+    border: none;
 }
 
 .material-icons.md-36.grey {
@@ -197,7 +201,7 @@ nav a:hover{
     padding: 2.5rem;
     border-radius: 1.6rem;
     box-shadow: 0 10px 20px 3px rgba(0,0,0,0.15);
-    margin-top: 2.5rem;
+    margin: 2.5rem 0 5rem 0;
     width: 80%;
     display: flex;
     justify-content: center;
