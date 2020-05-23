@@ -57,7 +57,7 @@ def signup_post():
     db.session.add(new_user)
     db.session.commit()
 
-    return redirect(url_for('auth.login', newuser=1))
+    return redirect(url_for('auth.login', nu=1))
 
 @auth.route('/logout')
 def logout():
