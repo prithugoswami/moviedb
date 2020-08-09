@@ -11,11 +11,11 @@ def create_app():
     # Set the db_url variable or else it will read the env variable
     # or else environment variable DATABASE_URL will be used
     db_url=""
-    if os.environ['DATABASE_URL']:
+    if 'DATABASE_URL' in os.environ.keys():
         db_url = os.environ['DATABASE_URL']
 
     app.config['SQLALCHEMY_DATABASE_URI'] = db_url
-    app.config['SECRET_KEY'] = 'thisisasecret'
+    app.config['SECRET_KEY'] = os.environ['APP_CONFIG_SECRET_KEY']
 
     db.init_app(app)
     CORS(app)
